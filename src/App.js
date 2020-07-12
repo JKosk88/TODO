@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Tasks from './components/tasks.js';
-import SideBar from './components/sideBar.js'
+import SideBar from './components/sideBar.js';
 
 
 function App() {
@@ -14,9 +14,7 @@ function App() {
         <div id='navBar'>
           <SideBar />
         </div>
-        <div id='tasks'>
           <Tasks />
-        </div>
       </div>
         
     </div>

@@ -1,19 +1,67 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import '../styles/tasks.css';
+import Task from './task.js';
 
 class tasks extends React.Component {
     render() {
         return (
             <div id='tasks'>
-                <ol>
-                    <li>taks 1</li>
-                    <li>task 2</li>
-                    <li>task 3</li>
-                    <li>task 4</li>
-                </ol>
-                <FontAwesomeIcon icon={faCoffee} />
+                <ul>
+                    <li>
+                        <Task title='Title' description='description' color='00c6f2'/>
+                    </li>
+
+                    <li>
+                        <Task title='Title' description='description' color='00c6f2'/>
+                    </li>
+
+                    <li>
+                        <Task title='Title' description='description' color='f200ad'/>
+                    </li>
+
+                    <li>
+                        <Task title='Title' description='description' color='f2a900'/>
+                    </li>
+
+                    <li>
+                        <Task title='Title' description='description'/>
+                    </li>
+
+                    <li>
+                        <Task 
+                        title='test' 
+                        description='desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc ' 
+                        color='000000' />
+                    </li>
+
+                    <li>
+                        <Task 
+                        title='test' 
+                        description='desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc ' 
+                        color='000000' />
+                    </li>
+
+                    <li>
+                        <Task 
+                        title='test' 
+                        description='desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc ' 
+                        color='000000' />
+                    </li>
+
+                    <li>
+                        <Task 
+                        title='test' 
+                        description='desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc ' 
+                        color='000000' />
+                    </li>
+
+                    <li>
+                        <Task 
+                        title='test' 
+                        description='desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc ' 
+                        color='000000' />
+                    </li>
+                </ul>
             </div>
         )
     }
