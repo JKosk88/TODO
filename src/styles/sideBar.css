@@ -1,0 +1,51 @@
+#sideBar ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+#sideBar ul li{
+    /* padding: 0 10px ; */
+}
+
+.sideBarElement{
+    border-bottom: 1px solid black;
+    padding: 20px;
+}
+
+#app{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#wrap{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#navBar{
+    width: 20%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.315);
+}
+
+#tasks{
+    width: 80%;
+}
+
+.sideBar-hover:hover{
+    background: linear-gradient(90deg,
+     rgba(255, 123, 0, 0.528) 0%, 
+     rgba(247, 181, 2, 0.527) 65%,
+     rgba(0,0,0,0) 100%);
+    /* box-shadow: inset 10px 0 15px -10px rgb(226, 150, 10); */
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.icon{
+    margin-right: 10px;
+    color: rgba(0, 0, 0, 0.678);
+}
