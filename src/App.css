@@ -16,3 +16,14 @@ body{
     font-size: 1.5rem;
     letter-spacing: 5px;
 }
+
+@media only screen and (max-width: 485px) {
+    #newTask{
+        width: 70vw;
+        padding: 20px;
+    }
+
+    .input-description{
+        font-size: 1rem;
+    }
+}

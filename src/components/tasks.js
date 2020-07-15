@@ -3,67 +3,41 @@ import '../styles/tasks.css';
 import Task from './task.js';
 
 class tasks extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            tasks: []
+        };
+    }
+
+    componentWillMount(){
+        // let localTasks;
+
+        // localTasks = localStorage.setItem(tasks = [
+        //     {id: 1, title: 'Hello World', description: 'Welcome to learning React!', color: '111fff'},
+        //     {id: 2, title: 'Installation', description: 'You can install React from npm.', color: 'fff111'}
+        // ])
+
+        console.log(this.state.tasks)
+    }
+
     render() {
-        return (
-            <div id='tasks'>
-                <ul>
-                    <li>
-                        <Task title='Title' description='description' color='00c6f2'/>
-                    </li>
+            
+            const content = this.state.tasks.map((task) =>
+              <li key={task.id}>
+                <Task title={task.title} description={task.description} color={task.color}/>
+              </li>
+            );
 
-                    <li>
-                        <Task title='Title' description='description' color='00c6f2'/>
-                    </li>
 
-                    <li>
-                        <Task title='Title' description='description' color='f200ad'/>
-                    </li>
-
-                    <li>
-                        <Task title='Title' description='description' color='f2a900'/>
-                    </li>
-
-                    <li>
-                        <Task title='Title' description='description'/>
-                    </li>
-
-                    <li>
-                        <Task 
-                        title='test' 
-                        description='desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc ' 
-                        color='000000' />
-                    </li>
-
-                    <li>
-                        <Task 
-                        title='test' 
-                        description='desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc ' 
-                        color='000000' />
-                    </li>
-
-                    <li>
-                        <Task 
-                        title='test' 
-                        description='desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc ' 
-                        color='000000' />
-                    </li>
-
-                    <li>
-                        <Task 
-                        title='test' 
-                        description='desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc ' 
-                        color='000000' />
-                    </li>
-
-                    <li>
-                        <Task 
-                        title='test' 
-                        description='desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc desc ' 
-                        color='000000' />
-                    </li>
-                </ul>
-            </div>
-        )
+            return (
+                <div id='tasks'>
+                    <ul>
+                        {content}
+                    </ul>
+                </div>
+            );
     }
 }
 
