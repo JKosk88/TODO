@@ -7,37 +7,26 @@ class tasks extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            tasks: []
+            tasks: [],
         };
     }
 
-    componentWillMount(){
-        // let localTasks;
+    render() {  
 
-        // localTasks = localStorage.setItem(tasks = [
-        //     {id: 1, title: 'Hello World', description: 'Welcome to learning React!', color: '111fff'},
-        //     {id: 2, title: 'Installation', description: 'You can install React from npm.', color: 'fff111'}
-        // ])
-
-        console.log(this.state.tasks)
-    }
-
-    render() {
-            
-            const content = this.state.tasks.map((task) =>
-              <li key={task.id}>
+        const content = JSON.parse(this.props.tasks).map((task, index) =>
+            <li key={index}>
                 <Task title={task.title} description={task.description} color={task.color}/>
-              </li>
-            );
+            </li>
+        );
 
 
-            return (
-                <div id='tasks'>
-                    <ul>
-                        {content}
-                    </ul>
-                </div>
-            );
+        return (
+            <div id='tasks'>
+                <ul>
+                    {content}
+                </ul>
+            </div>
+        );
     }
 }
 

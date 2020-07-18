@@ -27,6 +27,10 @@ class sidebar extends React.Component{
             this.setState({ colorShow: false });
         }
     }
+
+    changeColor(event){
+        localStorage.setItem('color', event.target.id);
+    }
     
 
     render() {
@@ -60,12 +64,12 @@ class sidebar extends React.Component{
                     </li>
                     <li>
                         <div id='colors'>
-                            <div className='color' id='red'></div>
-                            <div className='color' id='green'></div>
-                            <div className='color' id='blue'></div>
-                            <div className='color' id='yellow'></div>
-                            <div className='color' id='orange'></div>
-                            <div className='color' id='pink'></div>
+                            <div className='color red' id='990000' onClick={this.changeColor}></div>
+                            <div className='color green' id='009900' onClick={this.changeColor}></div>
+                            <div className='color blue' id='000099' onClick={this.changeColor}></div>
+                            <div className='color yellow' id='yellow' onClick={this.changeColor}></div>
+                            <div className='color orange' id='orange' onClick={this.changeColor}></div>
+                            <div className='color pink' id='pink' onClick={this.changeColor}></div>
                         </div>
                     </li>
                 </ul>

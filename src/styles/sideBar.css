@@ -65,26 +65,26 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.274);
 }
 
-#red{
+.red{
     background-color: rgb(255, 0, 55);
 }
 
-#green{
+.green{
     background-color: rgb(0, 209, 63);
 }
 
-#yellow{
+.yellow{
     background-color: rgb(225, 240, 17);
 }
 
-#pink{
+.pink{
     background-color: rgb(255, 70, 141);
 }
 
-#orange{
+.orange{
     background-color: rgb(255, 136, 0);
 }
 
-#blue{
+.blue{
     background-color: rgb(0, 140, 255);
 }

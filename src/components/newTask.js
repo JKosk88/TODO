@@ -2,18 +2,16 @@ import React from 'react';
 import '../styles/newTask.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { filter } from 'lodash';
 
 class newTask extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            title: '',
-            description: '',
-            date: '',
-            hour: '',
+            todos: [],
         };
+        
         this.close = this.close.bind(this);
-        this.addTask = this.addTask.bind(this);
         this.setToday = this.setToday.bind(this);
         this.setTomorrow = this.setTomorrow.bind(this);
         this.setThisWeek = this.setThisWeek.bind(this);
@@ -23,24 +21,15 @@ class newTask extends React.Component {
         document.getElementById('newTask').style.display = 'none';
     }
 
-    addTask(event){
-        event.preventDefault();
-
-        let title = document.getElementById('titleInput').value;
-        let description = document.getElementById('descriptionInput').value;
-        let date = document.getElementById('dateInput').value;
-        let hour = document.getElementById('hourInput').value;
-
-        // this.setState({ title: title, description: description, date: date, hour: hour });
-
-        let task ={
-            title: title,
-            description: description,
-            date: date,
-            hour: hour,
+    componentWillMount(){
+        if (!localStorage.getItem('id')){
+            localStorage.setItem('id', 0);    
         }
 
-        localStorage.setItem("task", task);
+        if (!localStorage.getItem('tasks')){
+            localStorage.setItem('tasks', []);
+        }
+        
     }
 
     setToday(event){
@@ -57,8 +46,6 @@ class newTask extends React.Component {
         let todayDate = `${yyyy}-${mm}-${dd}`;
 
         document.getElementById('dateInput').value = todayDate;
-
-        console.log(localStorage.getItem('task'))
     }
 
     setTomorrow(event){
@@ -85,7 +72,7 @@ class newTask extends React.Component {
 
         const today = new Date();
         const thisWeek = new Date(today);
-        thisWeek.setDate(thisWeek.getDate() + thisWeek.getDay() % 7 + 1)
+        thisWeek.setDate(thisWeek.getDate() + (7 - thisWeek.getDay()))
 
         var dd = thisWeek.getDate();
         var mm = thisWeek.getMonth() + 1;
@@ -123,7 +110,7 @@ class newTask extends React.Component {
                         <button className='button' onClick={this.setThisWeek} >This week</button>
                     </div>
                     
-                    <button id='addTask' onClick={this.addTask}>Add Task</button>
+                    <button id='addTask' onClick={this.props.updateTasks}>Add Task</button>
 
                 </form>
                 
