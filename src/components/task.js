@@ -2,7 +2,8 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudUploadAlt, faTrashAlt, faPen } from '@fortawesome/free-solid-svg-icons';
 
-class task extends React.Component {
+class task extends React.Component{
+
     render() {
         
         const divStyle = {

@@ -64,12 +64,12 @@ class sidebar extends React.Component{
                     </li>
                     <li>
                         <div id='colors'>
-                            <div className='color red' id='990000' onClick={this.changeColor}></div>
-                            <div className='color green' id='009900' onClick={this.changeColor}></div>
-                            <div className='color blue' id='000099' onClick={this.changeColor}></div>
-                            <div className='color yellow' id='yellow' onClick={this.changeColor}></div>
-                            <div className='color orange' id='orange' onClick={this.changeColor}></div>
-                            <div className='color pink' id='pink' onClick={this.changeColor}></div>
+                            <div className='color red' id='DF0B20' onClick={this.changeColor}></div>
+                            <div className='color green' id='0BDF2F' onClick={this.changeColor}></div>
+                            <div className='color blue' id='1FB1F0' onClick={this.changeColor}></div>
+                            <div className='color yellow' id='fde64b' onClick={this.changeColor}></div>
+                            <div className='color orange' id='FF9E0A' onClick={this.changeColor}></div>
+                            <div className='color pink' id='FF43B4' onClick={this.changeColor}></div>
                         </div>
                     </li>
                 </ul>

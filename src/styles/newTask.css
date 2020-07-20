@@ -95,6 +95,14 @@
     height: 40px;
 }
 
+#hint{
+    margin: 0;
+    color: rgb(207, 0, 0);
+    font-weight: 500;
+    text-align: center;
+    display: none;
+}
+
 @media only screen and (max-width: 885px) {
     #newTask{
         width: 50vw;
@@ -114,5 +122,23 @@
 
     .input-description{
         font-size: 1rem;
+    }
+
+    .button{
+        font-size: .3rem;
+        border: 1px solid rgb(255, 187, 0);
+    }
+
+    .input{
+        border: 1px solid black;
+    }
+
+    #addTask{
+        border: 2px solid #28a745;
+    }
+
+    .input-description{
+        margin:0;
+        font-size: .8rem;
     }
 }

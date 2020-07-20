@@ -4,13 +4,6 @@ import Task from './task.js';
 
 class tasks extends React.Component {
 
-    constructor(props){
-        super(props);
-        this.state = {
-            tasks: [],
-        };
-    }
-
     render() {  
 
         const content = JSON.parse(this.props.tasks).map((task, index) =>

@@ -2,7 +2,6 @@ import React from 'react';
 import '../styles/newTask.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-import { filter } from 'lodash';
 
 class newTask extends React.Component {
     constructor(props){
@@ -19,17 +18,6 @@ class newTask extends React.Component {
 
     close(){
         document.getElementById('newTask').style.display = 'none';
-    }
-
-    componentWillMount(){
-        if (!localStorage.getItem('id')){
-            localStorage.setItem('id', 0);    
-        }
-
-        if (!localStorage.getItem('tasks')){
-            localStorage.setItem('tasks', []);
-        }
-        
     }
 
     setToday(event){
@@ -103,6 +91,8 @@ class newTask extends React.Component {
 
                     <p className='input-description' >Deadline hour <span>(optional)</span></p>
                     <input type='time' className='input' id='hourInput'/>
+
+                    <p id='hint'>Title is required.</p>
 
                     <div id='buttonWrapper'>
                         <button className='button' onClick={this.setToday} >Today</button>

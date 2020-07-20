@@ -66,25 +66,25 @@
 }
 
 .red{
-    background-color: rgb(255, 0, 55);
+    background-color: #DF0B20;
 }
 
 .green{
-    background-color: rgb(0, 209, 63);
+    background-color: #0BDF2F;
 }
 
 .yellow{
-    background-color: rgb(225, 240, 17);
+    background-color: #fde64b;
 }
 
 .pink{
-    background-color: rgb(255, 70, 141);
+    background-color: #FF43B4;
 }
 
 .orange{
-    background-color: rgb(255, 136, 0);
+    background-color: #FF9E0A;
 }
 
 .blue{
-    background-color: rgb(0, 140, 255);
+    background-color: #1FB1F0;
 }
