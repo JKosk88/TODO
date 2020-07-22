@@ -3,7 +3,6 @@ import './App.css';
 import Tasks from './components/tasks.js';
 import SideBar from './components/sideBar.js';
 import NewTask from './components/newTask.js';
-import { dropRightWhile } from 'lodash';
 
 class App extends React.Component{
 
@@ -59,20 +58,13 @@ class App extends React.Component{
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
-  removeTask(){
-    var users = [
-      { 'user': 'barney',  'active': true },
-      { 'user': 'fred',    'active': false },
-      { 'user': 'pebbles', 'active': false }
-    ];
+  removeTask(title){
+    let tasks = [...this.state.tasks];
 
-    // let tasks = [
-    //   {'title': 'title', 'description': 'desc'},
-    //   {'title': 'title2', 'description': 'desc2'}
-    // ]
+    let tasksWithout = tasks.filter(function(e) { return e.title !== title; });
 
-    console.log(dropRightWhile(users, { 'user': 'pebbles', 'active': false }));
-    // console.log(dropRightWhile(tasks, { 'title': 'title', 'description': 'desc' }));
+    this.setState({ tasks: tasksWithout });
+    localStorage.setItem('tasks', JSON.stringify(tasksWithout));
   }
 
   componentDidMount(){
@@ -96,7 +88,7 @@ class App extends React.Component{
           <div id='navBar'>
             <SideBar />
           </div>
-            <Tasks tasks={JSON.stringify(this.state.tasks)}/>
+            <Tasks tasks={JSON.stringify(this.state.tasks)} removeTask={this.removeTask}/>
         </div>
         <NewTask updateTasks={this.addTask} />
       </div>

@@ -3,6 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloudUploadAlt, faTrashAlt, faPen } from '@fortawesome/free-solid-svg-icons';
 
 class task extends React.Component{
+    constructor(props){
+        super(props);
+
+        this.removeTask = this.removeTask.bind(this);
+    }
+
+    removeTask(){
+        this.props.removeTask(this.props.title);
+    }
 
     render() {
         
@@ -20,7 +29,7 @@ class task extends React.Component{
                     <p>{ this.props.description }</p>
                     <span className='icons'>
                     <FontAwesomeIcon icon={faCloudUploadAlt} />
-                    <FontAwesomeIcon icon={faTrashAlt} />
+                    <FontAwesomeIcon icon={faTrashAlt} onClick={this.removeTask}/>
                     <FontAwesomeIcon icon={faPen} />
                 </span>
                 </div>

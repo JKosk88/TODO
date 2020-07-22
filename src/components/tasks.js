@@ -8,7 +8,7 @@ class tasks extends React.Component {
 
         const content = JSON.parse(this.props.tasks).map((task, index) =>
             <li key={index}>
-                <Task title={task.title} description={task.description} color={task.color}/>
+                <Task title={task.title} description={task.description} color={task.color} removeTask={this.props.removeTask}/>
             </li>
         );
 
