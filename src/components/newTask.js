@@ -18,6 +18,11 @@ class newTask extends React.Component {
 
     close(){
         document.getElementById('newTask').style.display = 'none';
+
+        document.getElementById('titleInput').value = '';
+        document.getElementById('descriptionInput').value = '';
+        document.getElementById('dateInput').value = '';
+        document.getElementById('hourInput').value = '';
     }
 
     setToday(event){

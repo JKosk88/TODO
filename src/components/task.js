@@ -7,10 +7,15 @@ class task extends React.Component{
         super(props);
 
         this.removeTask = this.removeTask.bind(this);
+        this.editTask = this.editTask.bind(this);
     }
 
     removeTask(){
         this.props.removeTask(this.props.title);
+    }
+
+    editTask(){
+        this.props.editTask(this.props.title);
     }
 
     render() {
@@ -30,7 +35,7 @@ class task extends React.Component{
                     <span className='icons'>
                     <FontAwesomeIcon icon={faCloudUploadAlt} />
                     <FontAwesomeIcon icon={faTrashAlt} onClick={this.removeTask}/>
-                    <FontAwesomeIcon icon={faPen} />
+                    <FontAwesomeIcon icon={faPen} onClick={this.editTask}/>
                 </span>
                 </div>
                 

@@ -5,16 +5,17 @@ import SideBar from './components/sideBar.js';
 import NewTask from './components/newTask.js';
 
 class App extends React.Component{
-
   constructor(props){
     super(props);
 
     this.state={
       tasks: [],
+      index: undefined,
     }
     this.updateTasks = this.updateTasks.bind(this);
     this.addTask = this.addTask.bind(this);
     this.removeTask = this.removeTask.bind(this);
+    this.editTask = this.editTask.bind(this);
   }
 
   addTask(event){
@@ -47,8 +48,14 @@ class App extends React.Component{
     }
 
     let tasks = [...this.state.tasks];
-    tasks.push(task);
-    this.setState({ tasks: tasks });
+
+    if (this.state.index !== undefined){
+      tasks[this.state.index] = task;
+    } else {
+      tasks.push(task);
+    }
+    
+    this.setState({ tasks: tasks, index: undefined });
 
     document.getElementById('titleInput').value = '';
     document.getElementById('descriptionInput').value = '';
@@ -56,6 +63,23 @@ class App extends React.Component{
     document.getElementById('hourInput').value = '';
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    document.getElementById('newTask').style.display = 'none';
+  }
+
+  editTask(title){
+    let tasks = [...this.state.tasks];
+    
+    let index = tasks.findIndex((element) => { 
+      document.getElementById('titleInput').value = element.title;
+      document.getElementById('descriptionInput').value = element.description;
+      document.getElementById('dateInput').value = element.date;
+      document.getElementById('hourInput').value = element.hour;
+
+      return element.title === title 
+    });
+
+    this.setState({ index: index });
+    document.getElementById('newTask').style.display = 'block';
   }
 
   removeTask(title){
@@ -75,7 +99,6 @@ class App extends React.Component{
     let tasks = JSON.parse(localStorage.getItem('tasks'));
 
     this.setState({ tasks: tasks });
-    
   }
 
   render(){
@@ -88,7 +111,10 @@ class App extends React.Component{
           <div id='navBar'>
             <SideBar />
           </div>
-            <Tasks tasks={JSON.stringify(this.state.tasks)} removeTask={this.removeTask}/>
+            <Tasks 
+              tasks={JSON.stringify(this.state.tasks)}
+              removeTask={this.removeTask}
+              editTask={this.editTask}/>
         </div>
         <NewTask updateTasks={this.addTask} />
       </div>
