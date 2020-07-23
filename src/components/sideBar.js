@@ -51,7 +51,7 @@ class sidebar extends React.Component{
                         </div>
                     </li>
                     <li>
-                        <div className='sideBarElement sideBar-hover'>
+                        <div className='sideBarElement sideBar-hover' onClick={this.props.sortByPriority}>
                             <FontAwesomeIcon icon={faTasks} className='icon'/>
                             Sort by priority
                         </div>

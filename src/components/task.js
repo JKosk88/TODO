@@ -22,6 +22,12 @@ class task extends React.Component{
         
         const divStyle = {
             backgroundColor: '#' + this.props.color,
+            opacity: (1/parseInt(this.props.priority)) + .1,
+            // boxShadow: '0 0 ' + 10*parseInt(this.props.priority) + 'px #' + this.props.color,
+            marginLeft: '10px',
+            // border: 1 + parseInt(this.props.priority) + 'px solid #' + this.props.color,
+            // width: 20 * (1/parseInt(this.props.priority)) + 'px',
+            // height: 20 * (1/parseInt(this.props.priority)) + 'px',
         }
 
         return (
@@ -35,10 +41,10 @@ class task extends React.Component{
                 <div className='descriptionWrapper'>
                     <p>{ this.props.description }</p>
                     <span className='icons'>
-                    <FontAwesomeIcon icon={faCloudUploadAlt}/>
-                    <FontAwesomeIcon icon={faTrashAlt} onClick={this.removeTask}/>
-                    <FontAwesomeIcon icon={faPen} onClick={this.editTask}/>
-                </span>
+                        <FontAwesomeIcon icon={faCloudUploadAlt}/>
+                        <FontAwesomeIcon icon={faTrashAlt} onClick={this.removeTask}/>
+                        <FontAwesomeIcon icon={faPen} onClick={this.editTask}/>
+                    </span>
                 </div>
                 
             </div>

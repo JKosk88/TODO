@@ -11,7 +11,8 @@ class App extends React.Component{
     this.state={
       tasks: [],
       index: undefined,
-      dateDesc: true,
+      dateDesc: false,
+      priorityDesc: false,
     }
 
     this.updateTasks = this.updateTasks.bind(this);
@@ -20,6 +21,7 @@ class App extends React.Component{
     this.editTask = this.editTask.bind(this);
     this.cleanInput = this.cleanInput.bind(this);
     this.sortByDate = this.sortByDate.bind(this);
+    this.sortByPriority = this.sortByPriority.bind(this);
   }
 
   addTask(event){
@@ -131,6 +133,9 @@ class App extends React.Component{
   sortByDate(){
     const tasks = [...this.state.tasks];
     let order = this.state.dateDesc;
+    let dateNotSet = [];
+    let dateSet = [];
+    let readyTasks = [];
     
     function compareDate(a, b) {
       const dateA = a.date;
@@ -153,11 +158,76 @@ class App extends React.Component{
       return comparison;
     }
 
-    let sortedDate = tasks.sort(compareDate);
-    
-    this.setState({ tasks: sortedDate, dateDesc: !this.state.dateDesc });
+    function differentiate(element){
+      if (element.date){
+        dateSet.push(element);  
+      } else {
+        dateNotSet.push(element);
+      }
+    }
 
-    localStorage.setItem('tasks', JSON.stringify(sortedDate));
+    function pushTasks(element){
+      readyTasks.push(element);
+    }
+
+    tasks.forEach(differentiate);
+    dateSet = dateSet.sort(compareDate);  
+    
+    dateSet.forEach(pushTasks);
+    dateNotSet.forEach(pushTasks);
+    
+    this.setState({ tasks: readyTasks, dateDesc: !this.state.dateDesc });
+    localStorage.setItem('tasks', JSON.stringify(readyTasks));
+  }
+
+  sortByPriority(){
+    const tasks = [...this.state.tasks];
+    let order = this.state.priorityDesc;
+    let priorityNotSet = [];
+    let prioritySet = [];
+    let readyTasks = [];
+    
+    function comparePriority(a, b) {
+      const priorityA = a.priority;
+      const priorityB = b.priority;
+    
+      let comparison = 0;
+      let order1 = 1
+      let order2 = -1
+
+      if (order){
+        order1 = -1;
+        order2 = 1;
+      }
+
+      if (priorityA > priorityB) {
+        comparison = order1;
+      } else if (priorityA < priorityB) {
+        comparison = order2;
+      } 
+      return comparison;
+    }
+
+    function differentiate(element){
+      if (element.priority){
+        prioritySet.push(element);  
+      } else {
+        priorityNotSet.push(element);
+      }
+    }
+
+    function pushTasks(element){
+      readyTasks.push(element);
+    }
+
+    tasks.forEach(differentiate);
+    prioritySet = prioritySet.sort(comparePriority);  
+    
+    prioritySet.forEach(pushTasks);
+    priorityNotSet.forEach(pushTasks);
+    
+    this.setState({ tasks: readyTasks, priorityDesc: !this.state.priorityDesc });
+    localStorage.setItem('tasks', JSON.stringify(readyTasks));
   }
 
   componentDidMount(){
@@ -182,7 +252,7 @@ class App extends React.Component{
 
         <div id='wrap'>
           <div id='navBar'>
-            <SideBar sortByDate={this.sortByDate}/>
+            <SideBar sortByDate={this.sortByDate} sortByPriority={this.sortByPriority}/>
           </div>
             <Tasks 
               tasks={JSON.stringify(this.state.tasks)}

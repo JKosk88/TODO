@@ -14,6 +14,7 @@ class tasks extends React.Component {
                 date={task.date}
                 hour={task.hour}
                 color={task.color}
+                priority={task.priority}
                 removeTask={this.props.removeTask}
                 editTask={this.props.editTask}/>
             </li>
