@@ -42,6 +42,16 @@ class App extends React.Component{
     let description = document.getElementById('descriptionInput').value;
     let date = document.getElementById('dateInput').value;
     let hour = document.getElementById('hourInput').value;
+    let priority;
+
+    var radios = document.getElementsByName('priority');
+
+    for (let i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+        priority = radios[i].value;
+        break;
+      }
+    }
 
     let task = {
         'title': title,
@@ -49,6 +59,7 @@ class App extends React.Component{
         'hour': hour,
         'date': date,
         'color': color,
+        'priority': priority,
     }
 
     let tasks = [...this.state.tasks];
@@ -69,6 +80,10 @@ class App extends React.Component{
     localStorage.setItem('tasks', JSON.stringify(tasks));
     document.getElementById('newTask').style.display = 'none';
     document.getElementById('wrap').style.opacity = 1;
+
+    for (let i = 0, length = radios.length; i < length; i++) {
+        radios[i].checked = false;
+    }
   }
 
   editTask(title){
@@ -80,7 +95,19 @@ class App extends React.Component{
       document.getElementById('dateInput').value = element.date;
       document.getElementById('hourInput').value = element.hour;
 
-      return element.title === title 
+      let priority;
+      
+      if (element.priority){
+        priority = document.getElementById(element.priority);
+        priority.checked = true;
+      } else {
+        var radios = document.getElementsByName('priority');
+        for (let i = 0, length = radios.length; i < length; i++) {
+          radios[i].checked = false;
+        }
+      }
+
+      return element.title === title; 
     });
 
     this.setState({ index: index });

@@ -25,6 +25,14 @@ class newTask extends React.Component {
         document.getElementById('dateInput').value = '';
         document.getElementById('hourInput').value = '';
 
+        document.getElementById('hint').style.display = 'none'
+
+        var priority = document.getElementsByName('priority');
+
+        for (var i = 0, length = priority.length; i < length; i++) {
+            priority[i].checked = false;
+        }
+
         this.props.cleanInput();
     }
 
@@ -97,18 +105,37 @@ class newTask extends React.Component {
                     <p className='input-description' >Deadline date <span>(optional)</span></p>
                     <input type='date' className='input' id='dateInput'/>
 
-                    <p className='input-description' >Deadline hour <span>(optional)</span></p>
-                    <input type='time' className='input' id='hourInput'/>
-
-                    <p id='hint'>Title is required.</p>
-
                     <div id='buttonWrapper'>
                         <button className='button' onClick={this.setToday} >Today</button>
                         <button className='button' onClick={this.setTomorrow} >Tomorrow</button>
                         <button className='button' onClick={this.setThisWeek} >This week</button>
                     </div>
+
+                    <p className='input-description' >Deadline hour <span>(optional)</span></p>
+                    <input type='time' className='input' id='hourInput'/>
+
+                    <p className='input-description' >Priority</p>
+                    <div id='radioWrapper'>
+                        <label className='radio'>
+                            <input type='radio' value='3' id='3' name='priority'/>
+                            Low
+                            <span></span>
+                        </label>
+                        <label className='radio'>
+                            <input type='radio' value='2' id='2' name='priority'/>
+                            Medium
+                            <span></span>
+                        </label>
+                        <label className='radio'>
+                            <input type='radio' value='1' id='1' name='priority'/>
+                            High
+                            <span></span>
+                        </label>
+                    </div>
                     
                     <button id='addTask' onClick={this.props.updateTasks}>Add Task</button>
+
+                    <p id='hint'>Title is required.</p>
 
                 </form>
                 
