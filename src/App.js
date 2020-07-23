@@ -11,11 +11,15 @@ class App extends React.Component{
     this.state={
       tasks: [],
       index: undefined,
+      dateDesc: true,
     }
+
     this.updateTasks = this.updateTasks.bind(this);
     this.addTask = this.addTask.bind(this);
     this.removeTask = this.removeTask.bind(this);
     this.editTask = this.editTask.bind(this);
+    this.cleanInput = this.cleanInput.bind(this);
+    this.sortByDate = this.sortByDate.bind(this);
   }
 
   addTask(event){
@@ -64,6 +68,7 @@ class App extends React.Component{
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
     document.getElementById('newTask').style.display = 'none';
+    document.getElementById('wrap').style.opacity = 1;
   }
 
   editTask(title){
@@ -80,6 +85,11 @@ class App extends React.Component{
 
     this.setState({ index: index });
     document.getElementById('newTask').style.display = 'block';
+    document.getElementById('wrap').style.opacity = .3;
+  }
+
+  cleanInput(){
+    this.setState({ index: undefined });
   }
 
   removeTask(title){
@@ -91,10 +101,46 @@ class App extends React.Component{
     localStorage.setItem('tasks', JSON.stringify(tasksWithout));
   }
 
+  sortByDate(){
+    const tasks = [...this.state.tasks];
+    let order = this.state.dateDesc;
+    
+    function compareDate(a, b) {
+      const dateA = a.date;
+      const dateB = b.date;
+    
+      let comparison = 0;
+      let order1 = 1
+      let order2 = -1
+
+      if (order){
+        order1 = -1;
+        order2 = 1;
+      }
+
+      if (dateA > dateB) {
+        comparison = order1;
+      } else if (dateA < dateB) {
+        comparison = order2;
+      } 
+      return comparison;
+    }
+
+    let sortedDate = tasks.sort(compareDate);
+    
+    this.setState({ tasks: sortedDate, dateDesc: !this.state.dateDesc });
+
+    localStorage.setItem('tasks', JSON.stringify(sortedDate));
+  }
+
   componentDidMount(){
     
     if (!localStorage.getItem('tasks')){
-      localStorage.setItem('tasks', JSON.stringify([{title: 'title', description: 'desc'}]));
+      localStorage.setItem('tasks', JSON.stringify([{
+        title: 'Title',
+        description: 'Description',
+        date: '2020-10-10',
+        hour: '12:00'}]));
     }
     let tasks = JSON.parse(localStorage.getItem('tasks'));
 
@@ -109,14 +155,14 @@ class App extends React.Component{
 
         <div id='wrap'>
           <div id='navBar'>
-            <SideBar />
+            <SideBar sortByDate={this.sortByDate}/>
           </div>
             <Tasks 
               tasks={JSON.stringify(this.state.tasks)}
               removeTask={this.removeTask}
               editTask={this.editTask}/>
         </div>
-        <NewTask updateTasks={this.addTask} />
+        <NewTask updateTasks={this.addTask} cleanInput={this.cleanInput} />
       </div>
     );
   }

@@ -9,6 +9,13 @@
     margin: 0;
     display: inline-block;
     font-size: 1.2rem;
+    margin-right: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.deadline{
+    margin-left: 10px;
 }
 
 .icons{
@@ -26,7 +33,7 @@
 
 #tasks p{
     font-size: .9rem;
-    margin: 0;
+    /* margin: 0; */
     width: 85%;
     display: inline-block;
 }
@@ -64,4 +71,14 @@
 .descriptionWrapper{
     display: flex;
     justify-content: center;
+}
+
+.descriptionWrapper p{
+    max-width: 80%;
+    word-wrap: break-word;
+    margin-right: 10%;
+}
+
+.hour{
+    font-weight: bolder;
 }

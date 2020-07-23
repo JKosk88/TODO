@@ -16,6 +16,7 @@ class sidebar extends React.Component{
 
     showNewTask() {
         document.getElementById('newTask').style.display = 'block';
+        document.getElementById('wrap').style.opacity = .3;
     }
 
     showColors() {
@@ -31,7 +32,6 @@ class sidebar extends React.Component{
     changeColor(event){
         localStorage.setItem('color', event.target.id);
     }
-    
 
     render() {
 
@@ -45,7 +45,7 @@ class sidebar extends React.Component{
                         </div>
                     </li>
                     <li>
-                        <div className='sideBarElement sideBar-hover'>
+                        <div className='sideBarElement sideBar-hover' onClick={this.props.sortByDate}>
                             <FontAwesomeIcon icon={faCalendarAlt} className='icon'/>
                             Sort by date
                         </div>

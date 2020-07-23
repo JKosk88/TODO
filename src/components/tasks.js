@@ -11,6 +11,8 @@ class tasks extends React.Component {
                 <Task
                 title={task.title}
                 description={task.description}
+                date={task.date}
+                hour={task.hour}
                 color={task.color}
                 removeTask={this.props.removeTask}
                 editTask={this.props.editTask}/>

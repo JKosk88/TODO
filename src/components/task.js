@@ -28,12 +28,14 @@ class task extends React.Component{
             <div className='task'>
                 <div style={ divStyle } className='circle'></div>
                 <h2>{ this.props.title }</h2>
+                <span className='deadline'>{ this.props.date }</span>
+                <span className='deadline hour'>{ this.props.hour }</span>
                 <br/>
                 
                 <div className='descriptionWrapper'>
                     <p>{ this.props.description }</p>
                     <span className='icons'>
-                    <FontAwesomeIcon icon={faCloudUploadAlt} />
+                    <FontAwesomeIcon icon={faCloudUploadAlt}/>
                     <FontAwesomeIcon icon={faTrashAlt} onClick={this.removeTask}/>
                     <FontAwesomeIcon icon={faPen} onClick={this.editTask}/>
                 </span>
